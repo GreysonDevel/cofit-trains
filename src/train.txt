@@ -1,0 +1,34 @@
+100
+60
+1000
+Mine
+45
+15
+coal
+Mine
+30
+18
+iron
+Factory
+70
+40
+iron
+coal
+steel
+Shop
+50
+36
+xxx
+50
+60
+xxx
+
+Vysvetlivky:
+Řádek 1: Max velikost mapy na ose X (80 - 140),
+Řádek 2: Max velikost mapy na ose Y (60 - 80),
+Řádek 3: Kolik tiku bude hra trvat,
+Řádek 4 až N: budovy - budova má formát: první řádek označuje typ budovy(Factory/Mine/Shop), následující 2 řádky označují
+lokaci - první ze dvou je na ose X, druhý na ose Y, následující řádek(řádky) pak nese informaci, s jakými itemy může budova nakládat
+Řádek se třemi xxx: "xxx" označuje ukončení setování budov,
+Následující řádky označují max nosnost vlaků - kolik řádků s číslem max nosnosti vlaku - tolik vlaků ve hře bude.
+Opět tři xxx znamenají konec setování vlaků - v tomto případě již kompletně konec načítaní mapy.
