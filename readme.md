@@ -1,4 +1,4 @@
-# Cofit Minesweeper game
+# Cofit Trains game
 
 ## Pravidla soutěže:
 
