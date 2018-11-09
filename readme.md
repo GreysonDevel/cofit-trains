@@ -1,4 +1,4 @@
-# Cofit Trains game
+# Greyson Trains game
 
 ## Pravidla soutěže:
 
@@ -7,7 +7,7 @@ Pravidla soutěže:
 1. Naprogramuj algoritmus v Javě. Cílem hry je naplánovat jízdní řády vlakům tak, aby byla zadaná ekonomika co nejvýkonější. Prodejem surovin je spočítáno skóre. Vyhrává hráč s nejvyšším skóre.
     
 2. Pro implementaci použijte prostředí předpřipravené hry, která je k dispozici na<a
-                href="https://github.com/GreysonDevel/cofit-trains">https://github.com/GreysonDevel/cofit-trains</a>.
+                href="https://github.com/GreysonDevel/gc-trains">https://github.com/GreysonDevel/gc-trains</a>.
 3. Odevzdaný algoritmus bude na konci soutěže spouštěn na referenčních mapách, které nejsou řešiteli k dispozici. (Různe velikosti map, různe počty vláčků dolů, továren a obchodů, různe rozmýstnění všech objektů na mapě.) Hra hra má omezený herní čas(1000 tiků = 1000 tick). Za jeden tik se:
    * vytěží nebo vyrobí jedna jednotka suroviny
    * posune vlak o jednou pozici(vlak se posouvá do 8 směrů)
@@ -35,8 +35,8 @@ Stanice jsou dvou typů:
 5. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí<strong>25.10.2018 ve 17:00.</strong>
 
 ## Instrukce ke hře:
-1. Stáhni si hru z GitHubu: <a href="https://github.com/GreysonDevel/cofit-trains">https://github.com/GreysonDevel/cofit-trains</a>.
-        git clone https://github.com/GreysonDevel/cofit-trains.git
+1. Stáhni si hru z GitHubu: <a href="https://github.com/GreysonDevel/gc-trains">https://github.com/GreysonDevel/gc-trains</a>.
+        git clone https://github.com/GreysonDevel/gc-trains.git
 2. Otevři ve svém oblíbeném IDE jako Java SE projekt.
    
 * Ve složce <strong>game</strong> nic neměň, jinak si celou hru uděláš nekonzistentní s produkční hrou.
@@ -96,7 +96,7 @@ Stanice jsou dvou typů:
 
 5. Jakmile seš spokojený se svým algoritmem, odevzdej ho na stránce <a href="https://devel.greyson.eu/soutez/run">Upload</a>. Odevzdává se pouze soubor ImplementMePlayer.java . Po uploadu tvůj algoritmus okamžitě vyhodnotíme a zobrazíme dosažené skóre.
 
-6. Pokud nejsi spokojený se svým výsledkem, můžeš se pokusit algoritmus vylepšit a dostat se na přední příčky. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí <strong>25.10.2018 v 17:00.</strong>
+6. Pokud nejsi spokojený se svým výsledkem, můžeš se pokusit algoritmus vylepšit a dostat se na přední příčky. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí <strong>18.11.2018 v 23:59.</strong>
 
 7. Výherce bude kontaktován emailem, který uvedl při nahrávání algoritmu.
 
