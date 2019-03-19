@@ -4,7 +4,7 @@
 
 Pravidla soutěže:
 
-1. Naprogramuj algoritmus v Javě. Cílem hry je naplánovat jízdní řády vlakům tak, aby byla zadaná ekonomika co nejvýkonější. Prodejem surovin je spočítáno skóre. Vyhrává hráč s nejvyšším skóre.
+1. Naprogramuj algoritmus v Javě. Cílem hry je naplánovat jízdní řády vlakům tak, aby byla zadaná ekonomika co nejvýkonnější. Prodejem surovin je spočítáno skóre. Vyhrává hráč s nejvyšším skóre.
     
 2. Pro implementaci použijte prostředí předpřipravené hry, která je k dispozici na<a
                 href="https://github.com/GreysonDevel/gc-trains">https://github.com/GreysonDevel/gc-trains</a>.
@@ -14,7 +14,7 @@ Pravidla soutěže:
    * vykládka celého vlaku
    * naložení určité suroviny do vlaku
 
-Suroviny vznikají v dolech (Mine), zpracovávají se v továrnách (Factory) a jsou prodávány v obchodech (Shop). Co lze vytěžit v dolech, co a z čeho vyrábí továrny je popsáno ve veřejných metodách programu. Každá surovina má svoji cenu za kterou může být prodána v obchodech. Obchodu skupují všechno, ale za různe ceny. Pro jednotlivé vlaky sestav jízdní řád. Každý vlak má metodu addStation() která do jízdního řádu přidá zastávku. Vlak navštěvuje stanice v cyklu, neboli na konci jízdního řádu pokračuje opět od začátku. 
+Suroviny vznikají v dolech (Mine), zpracovávají se v továrnách (Factory) a jsou prodávány v obchodech (Shop). Co lze vytěžit v dolech, co a z čeho vyrábí továrny je popsáno ve veřejných metodách programu. Každá surovina má svoji cenu za kterou může být prodána v obchodech. Obchodu skupují všechno, ale za různé ceny. Každá budova má omezenou velikost skladu pro každou surovinu. Pokud je sklad plný, budova již surovinu nevyrábí a ani nepřijímá od vlaků. Pokud vlak doveze surovinu do plné stanice, nemůže vyložit surovinu a pokračuje dál. Pro jednotlivé vlaky sestav jízdní řád. Každý vlak má metodu addStation() která do jízdního řádu přidá zastávku. Vlak navštěvuje stanice v cyklu, neboli na konci jízdního řádu pokračuje opět od začátku.  
 
 Stanice jsou dvou typů:
    * Nakládací - vlak naloží zvolenou surovinu až do své maximální kapacity
@@ -31,8 +31,17 @@ Stanice jsou dvou typů:
    
    Každý herní objekt má vlastní informace (poloha, produkce, atd.), vyzkoušej jeho viditelné metody.
 
-4. Časový limit na vyřešení jedné mapy je 30s.
-5. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí<strong>25.10.2018 ve 17:00.</strong>
+4. Ve hře se setkáš s tímto ekonomickým modelem (surovina a její cena): 
+    * Iron - 1
+    * Wood - 1
+    * Coal - 2
+    * Gold - 5    
+    * Steel - 10 (vznikne sloučením Iron & Coal)
+    * Gold Ingot - 20 (vznikne sloučením Coal & Gold)
+    * Tool - 100 (vznikne sloučením Wood & Tool)
+    * Jewellery - 500 (vznikne sloučením Gold Ingot & Tool)
+    
+5. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí<strong>24.3.2019 ve 23:59.</strong>
 
 ## Instrukce ke hře:
 1. Stáhni si hru z GitHubu: <a href="https://github.com/GreysonDevel/gc-trains">https://github.com/GreysonDevel/gc-trains</a>.
@@ -41,7 +50,7 @@ Stanice jsou dvou typů:
    
 * Ve složce <strong>game</strong> nic neměň, jinak si celou hru uděláš nekonzistentní s produkční hrou.
 *  Ve složce <strong>maps</strong> je testovací mapa s minami, na které můžeš testovat svůj kód. Definici mapy můžeš libovolně měnit, aby sis vyzkoušel svůj algoritmus na jiných velikostech a rozmístění min.
-3. Napiš svůj algoritmus do metody <strong>findMines()</strong> ve třídě <strong>ImplementMePlayer.java</strong>.
+3. Napiš svůj algoritmus do metody <strong>dispatchTrainPaths()</strong> ve třídě <strong>ImplementMePlayer.java</strong>.
 * Balíček třídy musí zůstat
                     <pre class="prettyprint">package eu.greyson.trains</pre>
 * Definice třídy musí zůstat
@@ -96,7 +105,7 @@ Stanice jsou dvou typů:
 
 5. Jakmile seš spokojený se svým algoritmem, odevzdej ho na stránce <a href="https://devel.greyson.eu/soutez/run">Upload</a>. Odevzdává se pouze soubor ImplementMePlayer.java . Po uploadu tvůj algoritmus okamžitě vyhodnotíme a zobrazíme dosažené skóre.
 
-6. Pokud nejsi spokojený se svým výsledkem, můžeš se pokusit algoritmus vylepšit a dostat se na přední příčky. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí <strong>18.11.2018 v 23:59.</strong>
+6. Pokud nejsi spokojený se svým výsledkem, můžeš se pokusit algoritmus vylepšit a dostat se na přední příčky. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí <strong>24.3.2019 v 23:59.</strong>
 
 7. Výherce bude kontaktován emailem, který uvedl při nahrávání algoritmu.
 
