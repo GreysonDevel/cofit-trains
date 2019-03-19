@@ -29,16 +29,15 @@ abstract class GameLoader {
         while (!line.equals("xxx")) {
             switch (line) {
                 case "Mine":
-                    Mine mine = new Mine(new Location(Integer.parseInt(br.readLine()), Integer.parseInt(br.readLine())), itemSetter(br.readLine()));
+                    Mine mine = parseMine(br);
                     buildings.add(mine);
                     break;
                 case "Factory":
-                    Factory factory = new Factory(new Location(Integer.parseInt(br.readLine()),
-                            Integer.parseInt(br.readLine())), itemSetter(br.readLine()), itemSetter(br.readLine()), itemSetter(br.readLine()));
+                    Factory factory = parseFactory(br);
                     buildings.add(factory);
                     break;
                 case "Shop":
-                    Shop shop = new Shop(new Location(Integer.parseInt(br.readLine()), Integer.parseInt(br.readLine())),scoreHolder);
+                    Shop shop = parseShop(br, scoreHolder);
                     buildings.add(shop);
                     break;
                 default:
@@ -55,28 +54,29 @@ abstract class GameLoader {
         }
 
         validateBuildings(buildings, maxX, maxY);
+        validateMines(buildings);
         samePlaceValidator(buildings);
 
         TimeChecker.reset();
         return new Game(maxX, maxY, totalTicks, trains, buildings, scoreHolder);
     }
 
-    private static Item itemSetter(String fileItem) {
-        return Item.valueOf(fileItem.toUpperCase());
-    }
-
-    private static void validateBuildings(List<Building> validateObject, int maxX, int maxY) {
-        for (Building aValidateObject : validateObject) {
-            if (maxX < aValidateObject.getLocation().getX() || maxY < aValidateObject.getLocation().getY()) {
-                throw new WrongMapException();
+    private static void validateBuildings(List<Building> buildings, int maxX, int maxY) {
+        for (Building building : buildings) {
+            if (maxX < building.getLocation().getX() || maxY < building.getLocation().getY()) {
+                throw new WrongMapException("Building out of map!");
             }
         }
+    }
+
+    private static void validateMines(List<Building> buildings) {
+        buildings.stream().filter(Building::isMine).map(Mine.class::cast).forEach(GameLoader::validateMine);
     }
 
     private static int maxXLimitValidator(String currentMax) {
         int maxToValidate = Integer.parseInt(currentMax);
         if (maxToValidate > maxXMapLimit || maxToValidate < minXMapLimit) {
-            throw new WrongMapException();
+            throw new WrongMapException("Wrong map size (X axis)!");
         }
         return maxToValidate;
     }
@@ -84,7 +84,7 @@ abstract class GameLoader {
     private static int maxYLimitValidator(String currentMax) {
         int maxToValidate = Integer.parseInt(currentMax);
         if (maxToValidate > maxYMapLimit || maxToValidate < minYMapLimit) {
-            throw new WrongMapException();
+            throw new WrongMapException("Wrong map size(Y axis)!");
         }
         return maxToValidate;
     }
@@ -96,10 +96,48 @@ abstract class GameLoader {
                 if (a != b) {
                     Location locationTwo = buildings.get(b).getLocation();
                     if (location.getY() == locationTwo.getY() && locationTwo.getX() == location.getX()) {
-                        throw new WrongMapException();
+                        throw new WrongMapException("Two buildings on the same spot!");
                     }
                 }
             }
+        }
+    }
+
+    private static Mine parseMine(BufferedReader br) throws IOException {
+        return new Mine(
+                parseLocation(br),
+                itemSetter(br.readLine()),
+                Double.parseDouble(br.readLine())
+        );
+    }
+
+    private static Factory parseFactory(BufferedReader br) throws IOException {
+        return new Factory(
+                parseLocation(br),
+                itemSetter(br.readLine()),
+                itemSetter(br.readLine()),
+                itemSetter(br.readLine())
+        );
+    }
+
+    private static Shop parseShop(BufferedReader br, ScoreHolder scoreHolder) throws IOException {
+        return new Shop(
+                parseLocation(br),
+                scoreHolder
+        );
+    }
+
+    private static Item itemSetter(String fileItem) {
+        return Item.valueOf(fileItem.toUpperCase());
+    }
+
+    private static Location parseLocation(BufferedReader br) throws IOException {
+        return new Location(Integer.parseInt(br.readLine()), Integer.parseInt(br.readLine()));
+    }
+
+    private static void validateMine(Mine mine) throws WrongMapException {
+        if (mine.getTickProduction() < 0) {
+            throw new WrongMapException("Mine production cannot be below 0!");
         }
     }
 }

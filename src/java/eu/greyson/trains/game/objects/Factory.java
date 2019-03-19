@@ -15,9 +15,9 @@ public class Factory extends Building {
         this.inA = inA;
         this.inB = inB;
         this.out = out;
-        storage.putIfAbsent(inB, 0);
-        storage.putIfAbsent(inA, 0);
-        storage.putIfAbsent(out, 0);
+        storage.putIfAbsent(inB, 0.0);
+        storage.putIfAbsent(inA, 0.0);
+        storage.putIfAbsent(out, 0.0);
     }
 
     @Override
@@ -45,8 +45,9 @@ public class Factory extends Building {
 
     @Override
     void doTick() {
-        if (storage.get(inA) >= TICK_PRODUCTION &&
-                storage.get(inB) >= TICK_PRODUCTION) {
+        if (storage.get(inA) >= TICK_PRODUCTION
+                && storage.get(inB) >= TICK_PRODUCTION
+                && storage.get(out) + TICK_PRODUCTION <= STORAGE_CAPACITY) {
             storage.computeIfPresent(inA, (item, stored) -> stored - TICK_PRODUCTION);
             storage.computeIfPresent(inB, (item, stored) -> stored - TICK_PRODUCTION);
             storage.computeIfPresent(out, (item, stored) -> stored + TICK_PRODUCTION);

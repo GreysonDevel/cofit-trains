@@ -1,5 +1,6 @@
 package eu.greyson.trains.game.objects;
 
+import java.awt.*;
 import java.util.List;
 
 public abstract class GameObject {
@@ -23,7 +24,29 @@ public abstract class GameObject {
 
     abstract void doTick();
 
-    abstract List<String> getExtraInfo();
+    abstract List<Info> getExtraInfo();
 
     abstract void accept(Drawer visitor);
+
+    class Info {
+        private final String message;
+        private final Color color;
+
+        Info(String message) {
+            this(message, Color.BLACK);
+        }
+
+        Info(String message, Color color) {
+            this.message = message;
+            this.color = color;
+        }
+
+        String getMessage() {
+            return message;
+        }
+
+        Color getColor() {
+            return color;
+        }
+    }
 }

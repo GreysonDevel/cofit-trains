@@ -28,7 +28,7 @@ class Tree extends GameObject {
     }
 
     @Override
-    List<String> getExtraInfo() {
+    List<Info> getExtraInfo() {
         return Collections.emptyList();
     }
 }

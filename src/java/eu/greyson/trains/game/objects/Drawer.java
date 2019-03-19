@@ -16,6 +16,7 @@ class Drawer {
     private static final String MINE_ICON_COAL = "src/icons/mine-coal.png";
     private static final String MINE_ICON_IRON = "src/icons/mine-iron.png";
     private static final String MINE_ICON_WOOD = "src/icons/mine-wood.png";
+    private static final String MINE_ICON_GOLD = "src/icons/mine-gold.png";
     private static final String FACTORY_ICON = "src/icons/factory.png";
     private static final String SHOP_ICON = "src/icons/shop.png";
     private static final String TREE_ICON_1 = "src/icons/tree1.png";
@@ -29,6 +30,7 @@ class Drawer {
         images.put(MINE_ICON_COAL, loadImage(MINE_ICON_COAL));
         images.put(MINE_ICON_IRON, loadImage(MINE_ICON_IRON));
         images.put(MINE_ICON_WOOD, loadImage(MINE_ICON_WOOD));
+        images.put(MINE_ICON_GOLD, loadImage(MINE_ICON_GOLD));
         images.put(FACTORY_ICON, loadImage(FACTORY_ICON));
         images.put(SHOP_ICON, loadImage(SHOP_ICON));
         images.put(TREE_ICON_1, loadImage(TREE_ICON_1));
@@ -72,6 +74,9 @@ class Drawer {
             case WOOD:
                 simpleDraw(images.get(MINE_ICON_WOOD), mine, 40, 40);
                 break;
+            case GOLD:
+                simpleDraw(images.get(MINE_ICON_GOLD), mine, 40, 40);
+                break;
         }
     }
 
@@ -99,8 +104,6 @@ class Drawer {
         } else {
             simpleDraw(images.get(TREE_ICON_2), tree, 70, 50);
         }
-
-
     }
 
     private void simpleDraw(BufferedImage image, GameObject object, int x, int y) {
@@ -115,9 +118,14 @@ class Drawer {
                 null);
 
         int counter = 0;
-        List<String> extraInfo = object.getExtraInfo();
-        for (String s : extraInfo) {
-            graphics.drawString(s, location.getX() + x, location.getY() + (y / 2) + counter);
+
+        List<GameObject.Info> extraInfo = object.getExtraInfo();
+
+        for (GameObject.Info info : extraInfo) {
+            graphics.setColor(info.getColor());
+            graphics.drawString(info.getMessage(), location.getX() + x, location.getY() + (y / 2) + counter);
+            graphics.setColor(Color.BLACK);
+
             counter += 10;
         }
     }

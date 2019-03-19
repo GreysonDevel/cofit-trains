@@ -7,8 +7,11 @@ public enum Item {
     IRON(1),
     WOOD(1),
     COAL(2),
+    GOLD(5),
     STEEL(10),
-    AXE(100);
+    GOLD_INGOT(20),
+    TOOL(100),
+    JEWELLERY(500);
 
     private final int sellPrice;
 

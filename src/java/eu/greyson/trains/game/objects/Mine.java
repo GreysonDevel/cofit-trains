@@ -2,19 +2,23 @@ package eu.greyson.trains.game.objects;
 
 public class Mine extends Building {
 
-    private static final int TICK_PRODUCTION = 1;
-
     private final Item producedItem;
+    private final double tickProduction;
 
-    Mine(Location location, Item material) {
+    Mine(Location location, Item material, double tickProduction) {
         super(location);
         this.producedItem = material;
-        storage.put(material, 0);
+        this.tickProduction = tickProduction;
+        storage.put(material, 0.0);
     }
 
     @Override
     void doTick() {
-        storage.computeIfPresent(producedItem, (item, stored) -> stored + TICK_PRODUCTION);
+        if (storage.get(producedItem) + tickProduction > STORAGE_CAPACITY) {
+            storage.put(producedItem, (double) STORAGE_CAPACITY);
+        } else {
+            storage.computeIfPresent(producedItem, (item, stored) -> stored + tickProduction);
+        }
     }
 
     /**
@@ -24,6 +28,15 @@ public class Mine extends Building {
      */
     public Item getProducedItem() {
         return producedItem;
+    }
+
+    /**
+     * Vrací kolik suroviny je vyrobeno za jednu jednotku času.
+     *
+     * @return produkce suroviny
+     */
+    public double getTickProduction() {
+        return tickProduction;
     }
 
     @Override

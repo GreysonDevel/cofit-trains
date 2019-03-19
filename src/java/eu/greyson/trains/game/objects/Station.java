@@ -47,7 +47,7 @@ public class Station {
     }
 
     /**
-     * Vytvoří novou zastávku vlaku, ve které vlak kompletně vyloží svůj náklad.
+     * Vytvoří novou zastávku vlaku, ve které vlak kompletně vyloží svůj náklad s ohledem na kapacitu zastávky.
      *
      * @param building cílová budova
      * @return zastávka

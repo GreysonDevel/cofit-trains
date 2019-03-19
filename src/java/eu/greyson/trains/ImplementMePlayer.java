@@ -1,8 +1,9 @@
 package eu.greyson.trains;// neměň
 
 import eu.greyson.trains.game.exceptions.TimeoutException;
-import eu.greyson.trains.game.objects.Dispatcher;
-import eu.greyson.trains.game.objects.Game;
+import eu.greyson.trains.game.objects.*;
+
+import java.util.List;
 
 public class ImplementMePlayer extends Dispatcher { // neměň
 
@@ -19,6 +20,9 @@ public class ImplementMePlayer extends Dispatcher { // neměň
      * Suroviny vznikají v dolech (Mine), zpracovávají se v továrnách (Factory) a jsou prodávány v obchodech (Shop).
      * Každá surovina má svoji cenu za kterou je prodána.
      *
+     * Každá budova má omezenou velikost skladu pro každou surovinu. Pokud je sklad plný, budova již surovinu nevyrábí a
+     * ani nepřijímá od vlaků. Pokud vlak doveze surovinu do plné stanice, nemůže vyložit surovinu a pokračuje dál.
+     *
      * Spusť "Launcher" na ověření svého algoritmu a získání skóre. Můžeš si vybrat mezi GUI a konzolovým výstupem.
      *
      * JAK HRÁT:
@@ -28,7 +32,7 @@ public class ImplementMePlayer extends Dispatcher { // neměň
      *
      * Stanice jsou dvou typů:
      *  * Nakládací - vlak naloží zvolenou surovinu až do své maximální kapacity
-     *  * Vykládací - vlak kompletně vyloží svůj náklad
+     *  * Vykládací - vlak kompletně vyloží svůj náklad s ohledem na kapacitu zastávky
      *
      * GAME INFO:
      * game.getMaxX() a game.getMaxY() vrací maximální rozměry hracího pole

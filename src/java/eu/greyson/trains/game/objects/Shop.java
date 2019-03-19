@@ -8,15 +8,15 @@ public class Shop extends Building {
 
     protected Shop(Location location, ScoreHolder scoreHolder) {
         super(location);
-        this.scoreHolder =scoreHolder;
+        this.scoreHolder = scoreHolder;
     }
 
     @Override
     void doTick() {
-        for (Map.Entry<Item, Integer> itemRecord : storage.entrySet()) {
+        for (Map.Entry<Item, Double> itemRecord : storage.entrySet()) {
             Item item = itemRecord.getKey();
-            int stored = itemRecord.getValue();
-            scoreHolder.incrementScore(stored * item.getSellPrice());
+            double stored = itemRecord.getValue();
+            scoreHolder.incrementScore((int) stored * item.getSellPrice());
         }
         storage.clear();
     }

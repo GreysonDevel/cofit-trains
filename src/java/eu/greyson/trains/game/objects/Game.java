@@ -169,7 +169,7 @@ public class Game {
     }
 
     private <T> List<T> filterBuildings(Predicate<Building> filterPredicate, Class<T> targetClass) {
-        return Collections.unmodifiableList(buildings.stream().filter(filterPredicate).map(targetClass::cast).collect(Collectors.toList()));
+        return buildings.stream().filter(filterPredicate).map(targetClass::cast).collect(Collectors.toList());
     }
 
     List<GameObject> getAllGameObjects() {

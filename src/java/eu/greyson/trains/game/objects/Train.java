@@ -93,9 +93,9 @@ public class Train extends GameObject {
 
     private void handleUnload(Building building) {
         for (Map.Entry<Item, Integer> storedItems : storage.entrySet()) {
-            building.loadInto(storedItems.getKey(), storedItems.getValue());
+            int stored = building.loadInto(storedItems.getKey(), storedItems.getValue());
+            storedItems.setValue(storedItems.getValue() - stored);
         }
-        storage.clear();
     }
 
     private void handleMovement(Station currentStation) {
@@ -140,9 +140,15 @@ public class Train extends GameObject {
     }
 
     @Override
-    List<String> getExtraInfo() {
-        List<String> ret = new ArrayList<>();
-        storage.forEach((item, stored) -> ret.add(item + ":" + stored));
+    List<Info> getExtraInfo() {
+        List<Info> ret = new ArrayList<>();
+
+        storage.forEach((item, stored) -> {
+            if (stored > 0) {
+                ret.add(new Info(item + ":" + stored));
+            }
+        });
+
         return ret;
     }
 }
