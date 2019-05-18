@@ -41,7 +41,7 @@ Stanice jsou dvou typů:
     * Tool - 100 (vznikne sloučením Wood & Tool)
     * Jewellery - 500 (vznikne sloučením Gold Ingot & Tool)
     
-5. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí<strong>24.3.2019 ve 23:59.</strong>
+5. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí<strong>26.5.2019 ve 23:59.</strong>
 
 ## Instrukce ke hře:
 1. Stáhni si hru z GitHubu: <a href="https://github.com/GreysonDevel/gc-trains">https://github.com/GreysonDevel/gc-trains</a>.
@@ -105,7 +105,7 @@ Stanice jsou dvou typů:
 
 5. Jakmile seš spokojený se svým algoritmem, odevzdej ho na stránce <a href="https://devel.greyson.eu/soutez/run">Upload</a>. Odevzdává se pouze soubor ImplementMePlayer.java . Po uploadu tvůj algoritmus okamžitě vyhodnotíme a zobrazíme dosažené skóre.
 
-6. Pokud nejsi spokojený se svým výsledkem, můžeš se pokusit algoritmus vylepšit a dostat se na přední příčky. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí <strong>24.3.2019 v 23:59.</strong>
+6. Pokud nejsi spokojený se svým výsledkem, můžeš se pokusit algoritmus vylepšit a dostat se na přední příčky. Počet odevzdaných algoritmů není nijak limitován. Soutěž končí <strong>26.5.2019 v 23:59.</strong>
 
 7. Výherce bude kontaktován emailem, který uvedl při nahrávání algoritmu.
 
